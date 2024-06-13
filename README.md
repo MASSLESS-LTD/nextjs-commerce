@@ -1,10 +1,10 @@
-
-
 # ninjashanti
 
 This is the codebase for NinjaShanti
 
 It is based on Next.js commerce and uses Shopify
+
+To be hosted at https://ninjashanti.co.uk
 
 # Next.js Commerce
 
