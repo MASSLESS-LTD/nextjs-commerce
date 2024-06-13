@@ -19,8 +19,7 @@ export const getCollectionQuery = /* GraphQL */ `
     collection(handle: $handle) {
       ...collection
     }
-  }
-  ${collectionFragment}
+  }${collectionFragment}
 `;
 
 export const getCollectionsQuery = /* GraphQL */ `
@@ -32,8 +31,7 @@ export const getCollectionsQuery = /* GraphQL */ `
         }
       }
     }
-  }
-  ${collectionFragment}
+  }${collectionFragment}
 `;
 
 export const getCollectionProductsQuery = /* GraphQL */ `
@@ -51,6 +49,5 @@ export const getCollectionProductsQuery = /* GraphQL */ `
         }
       }
     }
-  }
-  ${productFragment}
+  }${productFragment}
 `;
