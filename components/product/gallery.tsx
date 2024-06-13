@@ -24,7 +24,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
   const previousUrl = createUrl(pathname, previousSearchParams);
 
   const buttonClassName =
-    'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
+    'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black hover:text-white flex items-center justify-center';
 
   return (
     <>
