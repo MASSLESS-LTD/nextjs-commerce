@@ -44,7 +44,7 @@ export default async function Footer() {
             {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
           </p>
           <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-
+          <p>Designed in the United Kingdom</p>
           <p className="md:ml-auto">
             <a href="https://massless.ltd" className="text-black">
               Crafted by MASSLESS LTD.
