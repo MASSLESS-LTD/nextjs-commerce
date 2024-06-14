@@ -17,7 +17,7 @@ export default async function OpengraphImage(props?: Props): Promise<ImageRespon
     (
       <div tw="">
         <div tw="">
-          <LogoIcon width="300" height="100" />
+          <LogoIcon />
         </div>
         <p tw="mt-12 text-6xl font-bold text-white">{title}</p>
       </div>
