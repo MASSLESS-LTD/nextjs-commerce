@@ -8,7 +8,7 @@ import type { Cart } from 'lib/shopify/types';
 import { createUrl } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import CloseCart from './close-cart';
 import { DeleteItemButton } from './delete-item-button';
 import { EditItemQuantityButton } from './edit-item-quantity-button';
@@ -36,14 +36,6 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
       quantityRef.current = cart?.totalQuantity;
     }
   }, [isOpen, cart?.totalQuantity, quantityRef]);
-
-  const checkoutHref = useMemo(() => {
-    if (cart) {
-      cart.checkoutUrl.replace('https://ninjashanti.co.uk/', 'https://ninjashanti.myshopify.com/');
-    }
-    return '#';
-  }, [cart?.checkoutUrl]);
-  console.log('checkoutHref', checkoutHref);
   return (
     <>
       <button aria-label="Open cart" onClick={openCart}>
@@ -178,10 +170,17 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     </div>
                   </div>
                   <a
-                    href={checkoutHref}
+                    href={cart.checkoutUrl.replace(
+                      'https://ninjashanti.co.uk/',
+                      'https://ninjashanti.myshopify.com/'
+                    )}
                     className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
                   >
-                    Proceed to Checkout {checkoutHref}
+                    Proceed to Checkout{' '}
+                    {cart.checkoutUrl.replace(
+                      'https://ninjashanti.co.uk/',
+                      'https://ninjashanti.myshopify.com/'
+                    )}
                   </a>
                 </div>
               )}
