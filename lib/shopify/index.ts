@@ -53,6 +53,8 @@ import {
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://')
   : '';
+console.log('domain:', domain);
+console.log('SHOPIFY_STORE_DOMAIN:', process.env.SHOPIFY_STORE_DOMAIN);
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
 console.log('endpoint:', endpoint);
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
