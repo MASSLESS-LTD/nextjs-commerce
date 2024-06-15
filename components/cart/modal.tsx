@@ -170,17 +170,10 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     </div>
                   </div>
                   <a
-                    href={cart.checkoutUrl.replace(
-                      'https://ninjashanti.co.uk/',
-                      'https://ninjashanti.myshopify.com/'
-                    )}
+                    href={cart.checkoutUrl}
                     className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
                   >
-                    Proceed to Checkout{' '}
-                    {cart.checkoutUrl.replace(
-                      'https://ninjashanti.co.uk/',
-                      'https://ninjashanti.myshopify.com/'
-                    )}
+                    Proceed to Checkout
                   </a>
                 </div>
               )}

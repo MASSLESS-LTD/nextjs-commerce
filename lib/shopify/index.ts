@@ -49,14 +49,16 @@ import {
   ShopifyRemoveFromCartOperation,
   ShopifyUpdateCartOperation
 } from './types';
-
+const debugOn = false;
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://')
   : '';
-console.log('domain:', domain);
-console.log('SHOPIFY_STORE_DOMAIN:', process.env.SHOPIFY_STORE_DOMAIN);
 const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
-console.log('endpoint:', endpoint);
+if (debugOn) {
+  console.log('domain:', domain);
+  console.log('SHOPIFY_STORE_DOMAIN:', process.env.SHOPIFY_STORE_DOMAIN);
+  console.log('endpoint:', endpoint);
+}
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 
 type ExtractVariables<T> = T extends { variables: object } ? T['variables'] : never;
