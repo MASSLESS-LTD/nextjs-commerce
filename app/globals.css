@@ -32,3 +32,7 @@ button {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+.onhover-unblur-sibling:hover ~ .onhover-unblur-me {
+  filter: blur(0px);
+}
