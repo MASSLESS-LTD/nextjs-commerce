@@ -44,11 +44,11 @@ export default async function Footer() {
           </p>
           <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
           <p>Designed in the United Kingdom</p>
-          <p className="md:ml-auto">
+          {/* <p className="md:ml-auto">
             <a href="https://georgecampbell.co.uk" className="text-black">
-              Crafted by George Campbell
+              Website developed by George Campbell
             </a>
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>
