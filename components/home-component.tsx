@@ -17,61 +17,29 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-import { Input } from 'components/ui/input';
 import Link from 'next/link';
 
 export function HomeComponent() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      <header className="flex h-14 items-center bg-[#1b1b1b] px-4 text-white lg:px-6">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <TurtleIcon className="h-6 w-6" />
-          <span className="sr-only">Ninja Shanti</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            href="#"
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            prefetch={false}
-          >
-            Shop
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            prefetch={false}
-          >
-            About
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            prefetch={false}
-          >
-            Features
-          </Link>
-          <Link
-            href="#"
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            prefetch={false}
-          >
-            Contact
-          </Link>
-        </nav>
-      </header>
-      <main className="flex-1">
+      <div className="flex-1">
         <section className="w-full bg-[#1b1b1b] py-12 text-white md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Unleash Your Inner Ninja with Shanti
+                    Unleash Your Inner Ninja Shanti
                   </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Ninja Shanti blends the stealth and resilience of a ninja with the tranquility
-                    and harmony of shanti. Discover our collection of hats, lighters, and t-shirts
-                    that embody the perfect balance of modern style and traditional elements.
+                  <p className="max-w-[550px] text-muted-foreground md:text-xl">
+                    At Ninja Shanti, we blend the stealth and resilience of a ninja with the
+                    tranquility and harmony of shanti, creating a unique clothing brand that speaks
+                    to the modern warrior's spirit.
+                  </p>
+                  <p className="max-w-[550px] text-muted-foreground md:text-xl">
+                    Our products, from hats and lighters to our line of t-shirts, embody this
+                    powerful fusion, offering style and functionality for those who navigate life's
+                    challenges with grace and strength.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -168,68 +136,7 @@ export function HomeComponent() {
             </div>
           </div>
         </section>
-        <section className="w-full bg-[#1b1b1b] py-12 text-white md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
-              <div className="space-y-4">
-                <div className="inline-block rounded-lg bg-[#00b894] px-3 py-1 text-sm">
-                  Features
-                </div>
-                <h2 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
-                  Discover the Unique Features of Ninja Shanti
-                </h2>
-                <div className="grid gap-6">
-                  <div className="grid gap-1">
-                    <h3 className="text-xl font-bold">Resilient and Durable</h3>
-                    <p className="text-muted-foreground">
-                      Our clothing is designed to withstand the rigors of your active lifestyle,
-                      ensuring long-lasting wear and tear resistance.
-                    </p>
-                  </div>
-                  <div className="grid gap-1">
-                    <h3 className="text-xl font-bold">Breathable and Comfortable</h3>
-                    <p className="text-muted-foreground">
-                      Crafted with high-quality, breathable fabrics, our clothing keeps you cool and
-                      comfortable, whether you're training or relaxing.
-                    </p>
-                  </div>
-                  <div className="grid gap-1">
-                    <h3 className="text-xl font-bold">Minimalist and Stylish</h3>
-                    <p className="text-muted-foreground">
-                      Our designs blend modern minimalism with traditional ninja and shanti
-                      elements, creating a unique and visually appealing aesthetic.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col items-start space-y-4">
-                <div className="inline-block rounded-lg bg-[#00b894] px-3 py-1 text-sm">Search</div>
-                <div className="relative w-full">
-                  <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    type="search"
-                    placeholder="Search our collection..."
-                    className="w-full appearance-none rounded-lg bg-[#1b1b1b] py-2 pl-8 pr-4 text-white shadow-none ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="flex w-full shrink-0 flex-col items-center gap-2 border-t bg-[#1b1b1b] px-4 py-6 text-white sm:flex-row md:px-6">
-        <p className="text-xs text-muted-foreground">
-          &copy; 2024 Ninja Shanti. All rights reserved.
-        </p>
-        <nav className="flex gap-4 sm:ml-auto sm:gap-6">
-          <Link href="#" className="text-xs underline-offset-4 hover:underline" prefetch={false}>
-            Terms of Service
-          </Link>
-          <Link href="#" className="text-xs underline-offset-4 hover:underline" prefetch={false}>
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+      </div>
     </div>
   );
 }
