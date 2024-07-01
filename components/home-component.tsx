@@ -50,13 +50,13 @@ export function HomeComponent() {
                   >
                     Shop Now
                   </Link>
-                  <Link
-                    href="#"
+                  {/* <Link
+                    href="/about"
                     className="inline-flex h-10 items-center justify-center rounded-md border border-[#555] bg-[#1b1b1b] px-8 text-sm font-medium shadow-sm transition-colors hover:bg-[#555] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Learn More
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
               <img
