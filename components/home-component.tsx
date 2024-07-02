@@ -24,14 +24,9 @@ import Link from 'next/link';
 export async function HomeComponent() {
   const lighters = await getCollectionProducts({ collection: 'lighters' });
   const lighter = lighters?.[0];
-  const homepageItems = await getCollectionProducts({
-    collection: 'hidden-homepage-featured-items'
-  });
-  const featuredLighter = homepageItems.find((item) =>
-    item.title.toLowerCase().includes('lighter')
-  );
+
   // gets the first image
-  const getImage = (product: Product | null) => {
+  const getImage = (product: Product | false) => {
     if (product) return product.images[0];
     return {
       url: '',
@@ -42,7 +37,7 @@ export async function HomeComponent() {
   };
   // Not sure why revalidate not working
   // console.log(homepageItems);
-  let lighterImage = getImage(lighter || featuredLighter || null) as unknown as {
+  let lighterImage = getImage(lighter || false) as unknown as {
     url: string;
     altText: string;
     width: number;
@@ -131,19 +126,21 @@ export async function HomeComponent() {
                 </div>
               </div>
               <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
-                <img
-                  src={lighterImage?.url}
-                  width="200"
-                  height="200"
-                  alt={lighterImage?.altText}
-                  className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
-                />
-                <div className="text-sm font-medium leading-none group-hover:underline">
-                  Ninja Shanti Lighter
-                </div>
-                <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  Ignite your inner flame with our sleek and durable ninja-inspired lighter.
-                </div>
+                <Link className="" href={`/product/${lighter?.handle}`}>
+                  <img
+                    src={lighterImage?.url}
+                    width="200"
+                    height="200"
+                    alt={lighterImage?.altText}
+                    className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
+                  />
+                  <div className="text-sm font-medium leading-none group-hover:underline">
+                    Ninja Shanti Lighter
+                  </div>
+                  <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                    Ignite your inner flame with our sleek and durable ninja-inspired lighter.
+                  </div>
+                </Link>
               </div>
               <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
                 <img
