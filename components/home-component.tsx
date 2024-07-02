@@ -17,9 +17,29 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
+import { getCollectionProducts } from 'lib/shopify';
+import type { Product } from 'lib/shopify/types';
 import Link from 'next/link';
 
-export function HomeComponent() {
+export async function HomeComponent() {
+  const homepageItems = await getCollectionProducts({
+    collection: 'hidden-homepage-featured-items'
+  });
+  const featuredLighter = homepageItems.find((item) =>
+    item.title.toLowerCase().includes('lighter')
+  );
+  // gets the first image
+  const getImage = (product: Product) => product.images[0];
+  console.log(homepageItems);
+  let lighterImage;
+  if (featuredLighter) {
+    lighterImage = getImage(featuredLighter) as unknown as {
+      src: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+  }
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <div className="flex-1">
@@ -104,10 +124,10 @@ export function HomeComponent() {
               </div>
               <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
                 <img
-                  src="/placeholder.svg"
+                  src={lighterImage?.src}
                   width="200"
                   height="200"
-                  alt="Product"
+                  alt={lighterImage?.alt}
                   className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
                 />
                 <div className="text-sm font-medium leading-none group-hover:underline">
