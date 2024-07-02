@@ -22,6 +22,8 @@ import type { Product } from 'lib/shopify/types';
 import Link from 'next/link';
 
 export async function HomeComponent() {
+  const lighters = await getCollectionProducts({ collection: 'lighters' });
+  const lighter = lighters?.[0];
   const homepageItems = await getCollectionProducts({
     collection: 'hidden-homepage-featured-items'
   });
@@ -29,18 +31,23 @@ export async function HomeComponent() {
     item.title.toLowerCase().includes('lighter')
   );
   // gets the first image
-  const getImage = (product: Product) => product.images[0];
+  const getImage = (product: Product | null) => {
+    if (product) return product.images[0];
+    return {
+      url: '',
+      altText: '',
+      width: 0,
+      height: 0
+    };
+  };
   // Not sure why revalidate not working
   // console.log(homepageItems);
-  let lighterImage;
-  if (featuredLighter) {
-    lighterImage = getImage(featuredLighter) as unknown as {
-      src: string;
-      alt: string;
-      width: number;
-      height: number;
-    };
-  }
+  let lighterImage = getImage(lighter || featuredLighter || null) as unknown as {
+    url: string;
+    altText: string;
+    width: number;
+    height: number;
+  };
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <div className="flex-1">
@@ -125,10 +132,10 @@ export async function HomeComponent() {
               </div>
               <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
                 <img
-                  src={lighterImage?.src}
+                  src={lighterImage?.url}
                   width="200"
                   height="200"
-                  alt={lighterImage?.alt}
+                  alt={lighterImage?.altText}
                   className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
                 />
                 <div className="text-sm font-medium leading-none group-hover:underline">
