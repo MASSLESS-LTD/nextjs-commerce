@@ -30,7 +30,8 @@ export async function HomeComponent() {
   );
   // gets the first image
   const getImage = (product: Product) => product.images[0];
-  console.log(homepageItems);
+  // Not sure why revalidate not working
+  // console.log(homepageItems);
   let lighterImage;
   if (featuredLighter) {
     lighterImage = getImage(featuredLighter) as unknown as {

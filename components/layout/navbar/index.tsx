@@ -14,7 +14,7 @@ export default async function Navbar() {
 
   return (
     <>
-      <nav className="Navbar fixed top-0 z-[999] flex w-full items-center justify-between border-b border-b-black bg-white p-4 lg:px-6">
+      <nav className="Navbar sticky top-0 z-[999] flex w-full items-center justify-between border-b border-b-black bg-white p-4 lg:px-6">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
@@ -58,7 +58,7 @@ export default async function Navbar() {
           </div>
         </div>
       </nav>
-      <div className="h-24"></div>
+      {/* <div className="h-24"></div> */}
     </>
   );
 }
