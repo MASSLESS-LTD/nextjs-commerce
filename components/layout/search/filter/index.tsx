@@ -19,7 +19,7 @@ function FilterItemList({ list }: { list: ListItem[] }) {
 export default function FilterList({ list, title }: { list: ListItem[]; title?: string }) {
   return (
     <>
-      <nav className="sticky top-0 md:top-[125px] lg:top-[145px]">
+      <nav className="sticky top-0 md:top-[125px] lg:top-[160px]">
         {title ? <h3 className="hidden text-xs text-neutral-500 md:block ">{title}</h3> : null}
         <ul className="hidden md:block">
           <Suspense fallback={null}>
