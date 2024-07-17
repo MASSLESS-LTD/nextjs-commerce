@@ -14,7 +14,7 @@ export default async function Navbar() {
 
   return (
     <>
-      <nav className="Navbar sticky top-0 flex w-full items-center justify-between border-b border-b-black bg-white p-4 lg:px-6">
+      <nav className="Navbar sticky top-0 z-10 flex w-full items-center justify-between border-b border-b-black bg-white p-4 lg:px-6">
         <div className="block flex-none md:hidden">
           <Suspense fallback={null}>
             <MobileMenu menu={menu} />
