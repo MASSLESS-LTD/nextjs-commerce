@@ -100,11 +100,11 @@ export async function HomeComponent() {
             </div>
           </div>
         </section>
-        <section className="w-full bg-white py-12 md:py-24 lg:py-32">
+        <section className="w-full bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-gradient-to-tr from-amber-600 via-amber-500 to-amber-300 px-3 py-1 text-sm text-white">
+                <div className="inline-block rounded-lg bg-gradient-to-tr px-3 py-1 text-sm text-white">
                   Featured Products
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -118,7 +118,7 @@ export async function HomeComponent() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
                 <Link className="" href={'/search/hats'}>
                   <img
                     src={hatImage?.url || '/placeholder.svg"'}
@@ -135,7 +135,7 @@ export async function HomeComponent() {
                   </div>
                 </Link>
               </div>
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
                 <Link className="" href={'/search/lighters'}>
                   <img
                     src={'/placeholder.svg' /* ||lighterImage?.url || */}
@@ -152,7 +152,7 @@ export async function HomeComponent() {
                   </div>
                 </Link>
               </div>
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
                 <Link className="" href={'/search?q=t-shirts'}>
                   <img
                     src="/placeholder.svg"
