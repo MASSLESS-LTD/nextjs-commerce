@@ -24,6 +24,8 @@ import Link from 'next/link';
 export async function HomeComponent() {
   const lighters = await getCollectionProducts({ collection: 'lighters' });
   const lighter = lighters?.[0];
+  const hats = await getCollectionProducts({ collection: 'hats' });
+  const hat = hats?.[1];
 
   // gets the first image
   const getImage = (product: Product | false) => {
@@ -43,10 +45,16 @@ export async function HomeComponent() {
     width: number;
     height: number;
   };
+  const hatImage = getImage(hat || false) as unknown as {
+    url: string;
+    altText: string;
+    width: number;
+    height: number;
+  };
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <div className="flex-1">
-        <section className="w-full bg-[#1b1b1b] py-12 text-white md:py-24 lg:py-32">
+        <section className="w-full bg-black py-12 text-white md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
@@ -54,12 +62,12 @@ export async function HomeComponent() {
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Unleash Your Inner Ninja Shanti
                   </h1>
-                  <p className="max-w-[550px] text-muted-foreground md:text-xl">
+                  <p className="max-w-[550px] text-muted-white md:text-xl">
                     At Ninja Shanti, we blend the stealth and resilience of a ninja with the
                     tranquility and harmony of shanti, creating a unique clothing brand that speaks
                     to the modern warrior's spirit.
                   </p>
-                  <p className="max-w-[550px] text-muted-foreground md:text-xl">
+                  <p className="max-w-[550px] text-muted md:text-xl">
                     Our products, from hats and lighters to our line of t-shirts, embody this
                     powerful fusion, offering style and functionality for those who navigate life's
                     challenges with grace and strength.
@@ -68,14 +76,14 @@ export async function HomeComponent() {
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Link
                     href="/search?q="
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-[#00b894] px-8 text-sm font-medium text-white shadow transition-colors hover:bg-[#00b894]/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-tr from-amber-700 via-amber-500 to-amber-300 px-8 text-sm font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Shop Now
                   </Link>
                   {/* <Link
                     href="/about"
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-[#555] bg-[#1b1b1b] px-8 text-sm font-medium shadow-sm transition-colors hover:bg-[#555] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-10 items-center justify-center rounded-md border border-[#555] bg-secondary px-8 text-sm font-medium shadow-sm transition-colors hover:bg-[#555] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Learn More
@@ -92,11 +100,11 @@ export async function HomeComponent() {
             </div>
           </div>
         </section>
-        <section className="w-full bg-[#f5f5f5] py-12 md:py-24 lg:py-32">
+        <section className="w-full bg-white py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-[#1b1b1b] px-3 py-1 text-sm text-white">
+                <div className="inline-block rounded-lg bg-gradient-to-tr from-amber-600 via-amber-500 to-amber-300 px-3 py-1 text-sm text-white">
                   Featured Products
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
@@ -110,53 +118,57 @@ export async function HomeComponent() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
-                <img
-                  src="/placeholder.svg"
-                  width="200"
-                  height="200"
-                  alt="Product"
-                  className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
-                />
-                <div className="text-sm font-medium leading-none group-hover:underline">
-                  Ninja Shanti Hat
-                </div>
-                <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  Blend stealth and tranquility with our signature ninja-inspired hat.
-                </div>
-              </div>
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
-                <Link className="" href={`/product/${lighter?.handle}`}>
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+                <Link className="" href={'/search/hats'}>
                   <img
-                    src={lighterImage?.url}
+                    src={hatImage?.url || '/placeholder.svg"'}
+                    width="200"
+                    height="200"
+                    alt={hatImage?.altText || 'Ninja Shanti Hat'}
+                    className="mx-auto mb-1 aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
+                  />
+                  <div className="mb-1 text-sm font-medium leading-none group-hover:underline">
+                    Ninja Shanti Hats
+                  </div>
+                  <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                    Blend stealth and tranquility with our signature ninja-inspired hat.
+                  </div>
+                </Link>
+              </div>
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+                <Link className="" href={'/search/lighters'}>
+                  <img
+                    src={'/placeholder.svg' /* ||lighterImage?.url || */}
                     width="200"
                     height="200"
                     alt={lighterImage?.altText}
-                    className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
+                    className="mx-auto mb-1 aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
                   />
-                  <div className="text-sm font-medium leading-none group-hover:underline">
-                    Ninja Shanti Lighter
+                  <div className="mb-1 text-sm font-medium leading-none group-hover:underline">
+                    Ninja Shanti Lighters - coming soon
                   </div>
                   <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                     Ignite your inner flame with our sleek and durable ninja-inspired lighter.
                   </div>
                 </Link>
               </div>
-              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-background p-4 text-sm font-medium transition-colors hover:bg-[#00b894] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-[#00b894]/50 data-[state=open]:bg-[#00b894]/50">
-                <img
-                  src="/placeholder.svg"
-                  width="200"
-                  height="200"
-                  alt="Product"
-                  className="mx-auto aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
-                />
-                <div className="text-sm font-medium leading-none group-hover:underline">
-                  Ninja Shanti T-Shirt
-                </div>
-                <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                  Embrace the balance of ninja stealth and shanti tranquility with our signature
-                  t-shirt.
-                </div>
+              <div className="group grid h-auto w-full items-center justify-start gap-1 rounded-md bg-gradient-to-b from-amber-600 via-amber-500 to-amber-300 p-4 text-sm font-medium transition-colors hover:text-white hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50">
+                <Link className="" href={'/search?q=t-shirts'}>
+                  <img
+                    src="/placeholder.svg"
+                    width="200"
+                    height="200"
+                    alt="Product"
+                    className="mx-auto mb-1 aspect-square overflow-hidden rounded-lg object-cover object-center sm:w-full"
+                  />
+                  <div className="mb-1 text-sm font-medium leading-none group-hover:underline">
+                    Ninja Shanti T-Shirts - coming soon
+                  </div>
+                  <div className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                    Embrace the balance of ninja stealth and shanti tranquility with our signature
+                    t-shirt.
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

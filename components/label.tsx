@@ -24,7 +24,7 @@ const Label = ({
       <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md ">
         <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">{title}</h3>
         <Price
-          className="flex-none rounded-full bg-[#00b894] p-2 text-white"
+          className="flex-none rounded-full bg-gradient-to-tr from-amber-700 via-amber-500 to-amber-300 p-2 text-white"
           amount={amount}
           currencyCode={currencyCode}
           currencyCodeClassName="hidden @[275px]/label:inline"
