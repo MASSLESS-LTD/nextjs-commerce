@@ -20,6 +20,7 @@ To read more about using these font, please visit the Next.js documentation:
 import { getCollectionProducts } from 'lib/shopify';
 import type { Product } from 'lib/shopify/types';
 import Link from 'next/link';
+import MotionButton from './ui/motion-button';
 
 export async function HomeComponent() {
   const lighters = await getCollectionProducts({ collection: 'lighters' });
@@ -74,13 +75,15 @@ export async function HomeComponent() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link
+                  <MotionButton
+                    Component="link"
+                    // @ts-ignore
                     href="/search?q="
                     className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-tr from-amber-700 via-amber-500 to-amber-300 px-8 text-sm font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Shop Now
-                  </Link>
+                  </MotionButton>
                   {/* <Link
                     href="/about"
                     className="inline-flex h-10 items-center justify-center rounded-md border border-[#555] bg-secondary px-8 text-sm font-medium shadow-sm transition-colors hover:bg-[#555] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
